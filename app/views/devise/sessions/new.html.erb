@@ -1,6 +1,6 @@
 <%= render "shared/second-header" %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "registration-main" }) do |f| %>
+<%= form_with model: resource, url: session_path(resource_name), method: :put, local: true, class: "registration-main" do |f| %>
   <div class="form-wrap">
     <div class="form-header">
       <h1 class="form-header-text">会員情報入力</h1>

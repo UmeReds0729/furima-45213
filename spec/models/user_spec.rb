@@ -102,6 +102,12 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password must include both letters and numbers")
       end
+      it 'passwordは全角文字混在では保存できない' do
+        @user.password = 'ｔest１234'
+        @user.password_confirmation = 'ｔest１234'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password must include both letters and numbers")
+      end
 
       it '重複したemailが存在する場合は登録できない' do
         @user.save
