@@ -62,33 +62,33 @@ RSpec.describe Item, type: :model do
       it 'nameが41文字以上では出品できない' do
         @item.name = 'a' * 41
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'descriptionが1001文字以上では出品できない' do
         @item.description = 'b' * 1001
         @item.valid?
-        expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
       end
 
       it 'priceは半角数字以外では出品できない' do
         @item.price = '５000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceは小数では出品できない' do
         @item.price = 5000.5
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be an integer")
+        expect(@item.errors.full_messages).to include('Price must be an integer')
       end
       it 'priceは300未満では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceは10000000以上では出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
     end
   end
