@@ -1,5 +1,6 @@
 const price = () => {
   const itemPrice = document.getElementById("item-price");
+  if (!itemPrice) return; // 要素がなければ処理をやめる
 
   itemPrice.addEventListener("input", () => {
     const inputValue = Number(itemPrice.value);
