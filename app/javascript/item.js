@@ -1,15 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let itemPrice = document.getElementById("item-price")
+const price = () => {
+  const itemPrice = document.getElementById("item-price");
 
   itemPrice.addEventListener("input", () => {
-    let price = Number(itemPrice.value)
-    let commission = price * 0.1
-    let profit = price - commission
+    const inputValue = Number(itemPrice.value);
 
-    let commissionArea = document.getElementById("add-tax-price");
-    let profitArea = document.getElementById("profit");
+    const commission = Math.floor(inputValue * 0.1);
+    document.getElementById("add-tax-price").innerHTML = commission.toLocaleString();
 
-    commissionArea.textContent = commission;
-    profitArea.textContent = profit;
+    const profit = Math.floor(inputValue - commission);
+    document.getElementById("profit").innerHTML = profit.toLocaleString();
   });
-});
+};
+
+window.addEventListener("turbo:load", price);
+window.addEventListener("turbo:render", price);
