@@ -59,7 +59,12 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors[:phone]).to include("is too short")
       end
-      it 'phoneが10～11桁の半角数字のみでないと購入できない' do
+      it 'phoneが12桁以上では購入できない' do
+        @order_shipping_address.phone = '0904567890123'
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors[:phone]).to include("is invalid. Input only number")
+      end
+      it 'phoneに数字以外が含まれている場合は購入できない' do
         @order_shipping_address.phone = '090-0000-0000'
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors[:phone]).to include("is invalid. Input only number")

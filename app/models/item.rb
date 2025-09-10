@@ -18,4 +18,5 @@ class Item < ApplicationRecord
   belongs_to :delivery_charge
   belongs_to :region
   belongs_to :shipping_days
+  has_one :order
 end
