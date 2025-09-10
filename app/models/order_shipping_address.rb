@@ -15,6 +15,7 @@ class OrderShippingAddress
     validates :address
     validates :phone, presence: true, length: { minimum: 10, too_short: "is too short" }, format: { with: /\A\d{10,11}\z/, message: "is invalid. Input only number" }
     validates :user_id
+    validates :item_id
   end
 
   def save
