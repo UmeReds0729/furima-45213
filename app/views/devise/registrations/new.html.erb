@@ -72,12 +72,18 @@
         <span class="indispensable">必須</span>
       </div>
       <div class="input-birth-wrap">
-        <%= select_year(nil, start_year: 1900, end_year: Time.current.year, field_name: 'birthday(1i)', prefix: 'user', prompt: '--') %>
-        <p>年</p>
-        <%= select_month(nil, use_month_numbers: true, field_name: 'birthday(2i)', prefix: 'user', prompt: '--') %>
-        <p>月</p>
-        <%= select_day(nil, field_name: 'birthday(3i)', prefix: 'user', prompt: '--') %>
-        <p>日</p>
+              <%= raw sprintf(
+                  f.date_select(
+                    :birthday,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1930,
+                    end_year: (Time.now.year - 5),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+
       </div>
 
       <p class="info-text">※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
