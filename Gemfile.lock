@@ -400,7 +400,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   nokogiri
   payjp
-  pg
+  pg (~> 1.4)
   pry-rails
   puma (>= 5.0)
   rails (~> 7.1.0)

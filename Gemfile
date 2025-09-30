@@ -76,7 +76,7 @@ end
 
 gem 'pry-rails'
 
-gem 'pg'
+gem 'pg', '~> 1.4'
 
 group :production do
   gem 'unicorn', '6.1.0'
